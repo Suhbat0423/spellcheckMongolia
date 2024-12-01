@@ -1,0 +1,11 @@
+*.egg-info
+tmp
+.cache
+**/__pycache__
+dictionaries
+dist
+experiment
+.mypy_cache/
+docs/_build
+internal/
+build/

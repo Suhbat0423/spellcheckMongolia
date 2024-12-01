@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "spylls"
+version = "0.1.7"
+description = ""
+authors = ["Victor Shepelev <zverok.offline@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.3.5"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
