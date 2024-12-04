@@ -206,22 +206,6 @@ class Dictionary:
         return self.lookuper(word)
 
     def suggest(self, word: str) -> Iterator[str]:
-        """
-        Suggests corrections for the misspelled word (in order of probability/similarity, best
-        suggestions first), returns lazy generator of suggestions.
 
-        ::
-
-            >>> suggestions = dictionary.suggest('spylls')
-            <generator object Dictionary.suggest at 0x7f5c63e4a2d0>
-
-            >>> for suggestion in dictionary.suggest('spylls'):
-            ...    print(sugestion)
-            spells
-            spills
-
-        Args:
-            word: Misspelled word
-        """
 
         yield from self.suggester(word)
