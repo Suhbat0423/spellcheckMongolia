@@ -9,5 +9,7 @@
 ## Хэрхэн ажлуулах талаар
 
 ```bash
+
 pip install spylls
 pip install nspell
+```

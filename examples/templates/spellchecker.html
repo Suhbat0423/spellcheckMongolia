@@ -90,6 +90,76 @@
     </ul>
   </div>
   <!-- Spellcheck section -->
+  <div
+  class="container max-w-3xl p-6 border border-white shadow-lg rounded-lg text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+>
+  <h1 class="text-2xl font-bold mb-4 text-gray-800">
+    Монгол үгийн алдаа шалгах веб
+  </h1>
+  <form method="post" onsubmit="return validateTextLength()">
+    <textarea
+      id="text-input"
+      name="text"
+      rows="6"
+      class="w-full p-3 text-base border border-gray-300 rounded mb-4 resize-none"
+      oninput="updateCounts()"
+      placeholder="Текстээ энд оруулна уу..."
+    >
+{{ text }}</textarea
+    >
+    <button
+      type="submit"
+      id="submit-button"
+      class="px-4 py-2 bg-green-500 text-white font-medium rounded hover:bg-green-600 transition"
+    >
+      Шалгах
+    </button>
+  </form>
+
+  <div class="stats flex gap-8 justify-center mt-6">
+    <p id="total-words" class="px-4 py-2 bg-green-500 text-white rounded">
+      Нийт үг: 0
+    </p>
+    <p id="total-letters" class="px-4 py-2 bg-green-500 text-white rounded">
+      Нийт үсэг: 0
+    </p>
+    <p
+      id="remaining-characters"
+      class="px-4 py-2 bg-green-500 text-white rounded"
+    >
+      300 / 300
+    </p>
+  </div>
+
+  {% if text %}
+  <p class="text-green-600 font-medium mt-4">
+    Нийт алдаатай үг: {{ total_mistakes }}
+  </p>
+  {% endif %} {% if mistakes %}
+  <div class="mistakes mt-6">
+    <h2 class="text-lg font-bold mb-4">Алдаатай үгнүүд</h2>
+    <ul class="flex">
+      {% for word, suggestions in suggestions %}
+      <li class="p-4 border rounded">
+        <strong class="text-red-500">{{ word }}</strong>:
+        <ul class="ml-4">
+          {% for suggestion in suggestions %}
+          <li class="text-gray-700">{{ suggestion }}</li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% elif text %}
+  <p class="text-green-600 font-medium mt-4">No mistakes found.</p>
+  {% endif %} {% if total_letters > 300 %}
+  <p class="text-red-500 font-medium mt-4">
+    You have exceeded the 300 character limit.
+  </p>
+  {% endif %}
+</div>
+
 </body>
 
 
