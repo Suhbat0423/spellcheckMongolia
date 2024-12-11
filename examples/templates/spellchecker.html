@@ -236,10 +236,10 @@
 
         document.getElementById(
           "total-words"
-        ).textContent = Нийт үг: ${totalWords};
+        ).textContent = `Нийт үг: ${totalWords}`;
         document.getElementById(
           "total-letters"
-        ).textContent = Нийт үсэг: ${totalLetters};
+        ).textContent = `Нийт үсэг: ${totalLetters}`;
 
         const remaining = MAX_LENGTH - totalLetters;
         if (remaining < 0) {
@@ -249,7 +249,7 @@
         } else {
           document.getElementById(
             "remaining-characters"
-          ).textContent = 300 / ${remaining};
+          ).textContent = `300 / ${remaining}`;
           document.getElementById("submit-button").disabled = false;
         }
       }
@@ -277,7 +277,7 @@
         if (repeatedWords.length > 0) {
           repeatedWords.forEach(([word, count]) => {
             const listItem = document.createElement("li");
-            listItem.textContent = ${word} (давтагдсан: ${count} удаа);
+            listItem.textContent = `${word} (давтагдсан: ${count} удаа)`;
             repeatedWordsList.appendChild(listItem);
           });
         } else {
