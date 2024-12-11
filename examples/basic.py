@@ -20,7 +20,7 @@ def spellchecker():
         text = request.form['text'] 
 
 
-        text_cleaned = text.translate(str.maketrans('', '', '.,'))
+        text_cleaned = text.translate(str.maketrans('', '', '.,:;'))
         
 
         total_letters = sum(c.isalpha() for c in text_cleaned)
