@@ -1,211 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mongolian Spellchecker</title>
-    <style>
-      /* Reset default margin and padding for all elements */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mongolian Spellchecker</title>
+  <!-- Include Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Keyframes for rotating mini balls along the circular path */
+    @keyframes rotate-path {
+      0% {
+        transform: rotate(0deg);
       }
 
-      /* Set a full-screen layout */
-      body {
-        font-family: Arial, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #f4f7fc;
+      100% {
+        transform: rotate(360deg);
       }
+    }
+    body {
+      overflow: hidden;
+    }
+    .animate-outer {
+      animation: rotate-path 10s linear infinite;
+    }
 
-      /* Wrapper for the content */
-      .container {
-        width: 100%;
-        max-width: 800px;
-        padding: 20px;
-        background-color: #fff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        text-align: center;
-      }
+    .animate-middle {
+      animation: rotate-path 7s linear infinite;
+    }
 
-      h1 {
-        font-size: 2rem;
-        margin-bottom: 20px;
-        color: #333;
-      }
-
-      /* Form styling */
-      textarea {
-        width: 100%;
-        padding: 10px;
-        font-size: 1rem;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        resize: vertical;
-        margin-bottom: 15px;
-      }
-
-      button {
-        padding: 10px 20px;
-        font-size: 1rem;
-        background-color: #4caf50;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
-
-      button:hover {
-        background-color: #45a049;
-      }
-
-      .stats {
-        margin-top: 20px;
-        text-align: left;
-        font-size: 1.1rem;
-      }
-
-      .stats p {
-        margin-bottom: 10px;
-      }
-
-      .mistakes ul {
-        list-style-type: none;
-        padding: 0;
-        margin-top: 10px;
-        text-align: left;
-        display: flex;
-      }
-
-      .mistakes li {
-        margin-bottom: 5px;
-      }
-      .word12 {
-        display: flex;
-        flex-direction: column;
-        margin-left: 12px;
-      }
-      .list12 {
-        border-radius: 4px;
-        border: 1px solid rgba(0, 0, 0, 0.081);
-        gap: 12px;
-        padding: 12px;
-        margin-left: 12px;
-      }
-      .mistakes strong {
-        color: #e74c3c;
-      }
-
-      .error {
-        color: #e74c3c;
-        font-size: 1.1rem;
-        margin-top: 20px;
-      }
-
-      .success {
-        color: #2ecc71;
-        font-size: 1.1rem;
-        margin-top: 20px;
-      }
-      .stats {
-        display: flex;
-        gap: 40px;
-        justify-content: center;
-      }
-      .stats p {
-        padding: 4px 12px;
-        border-radius: 4px;
-        border: 1px solid rgba(188, 188, 188, 0.316);
-        background-color: #45a049;
-        color: white;
-        font-size: bold;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Mongolian Spellchecker</h1>
-      <form method="post" onsubmit="return validateTextLength()">
-        <textarea
-          id="text-input"
-          name="text"
-          rows="6"
-          oninput="updateCounts()"
-          placeholder=""
-        >
-        {{ text }}
-        </textarea
-        ><br />
-        <button type="submit" id="submit-button">Check Spelling</button>
-      </form>
-
-      <div class="stats">
-        <p id="total-words">Нийт үг: 0</p>
-        <p id="total-letters">Total letters: 0</p>
-        <p id="remaining-characters">300 / 300</p>
+    .animate-inner {
+      animation: rotate-path 12s linear infinite;
+    }
+  </style>
+</head>
+<body class=" h-screen bg-black bg-cover bg-no-repeat bg-center" style="
+    background-image: url('https://nhs.edu.mn/_next/static/media/stars.0f326db4.png');
+  ">
+  <!-- Background galaxy start  -->
+  <div class="relative w-full h-screen mt-[20%]">
+    <div class="absolute inset-0 flex justify-center items-center">
+      <div
+        class="relative flex justify-center items-center w-[1100px] h-[1100px] border border-white rounded-full border-opacity-30">
+        <div class="absolute w-[1100px] h-[1100px] rounded-full animate-outer"
+          style="transform-origin: center; position: absolute;">
+          <div class="absolute w-4 h-4 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-full shadow-lg"
+            style="top: 0; left: 42%; transform: translateX(-20%); box-shadow: 0 0 10px 3px rgba(255, 105, 135, 0.6);">
+          </div>
+        </div>
+        <div
+          class="relative flex justify-center items-center w-[1020px] h-[1020px] border border-white rounded-full border-opacity-30">
+          <div class="absolute w-[1020px] h-[1020px] rounded-full animate-middle"
+            style="transform-origin: center; position: absolute;">
+            <div
+              class="absolute w-4 h-4 bg-gradient-to-r from-green-400 via-blue-500 to-green-500 rounded-full shadow-lg"
+              style="top: 0; left: 42%; transform: translateX(-20%); box-shadow: 0 0 10px 3px rgba(105, 255, 138, 0.6);">
+            </div>
+          </div>
+          <div class="relative w-[920px] h-[920px] border border-white rounded-full border-opacity-20">
+            <div class="absolute w-[920px] h-[920px] rounded-full animate-inner"
+              style="transform-origin: center; position: absolute;">
+              <div
+                class="absolute w-4 h-4 bg-gradient-to-r from-blue-400 via-purple-500 to-blue-500 rounded-full shadow-lg"
+                style="top: 0; left: 42%; transform: translateX(-20%); box-shadow: 0 0 10px 3px rgba(105, 255, 223, 0.6);">
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      {% if text %}
-      <p class="success">Total mistakes: {{ total_mistakes }}</p>
-      {% endif %} {% if mistakes %}
-      <div class="mistakes">
-        <h2>Detected Mistakes</h2>
-        <ul>
-          {% for word, suggestions in suggestions %}
-          <li class="list12">
-            <strong>{{ word }}</strong>:
-            <ul class="word12">
-              {% for suggestion in suggestions %}
-              <li>{{ suggestion }}</li>
-              {% endfor %}
-            </ul>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-      {% elif text %}
-      <p class="success">No mistakes found.</p>
-      {% endif %} {% if total_letters > 300 %}
-      <p class="error">You have exceeded the 300 character limit.</p>
-      {% endif %}
     </div>
+  </div>
+  <!-- Header section start -->
+  <div class="h-16 w-full bg-white text-white fixed top-0 left-0 px-40 flex justify-between items-center" style="background-color: rgba(35, 35, 55, 0.415);">
+    <div class="flex items-center ">
+      <img class="w-12 " src="https://cdn-icons-png.flaticon.com/512/3344/3344790.png" alt="">
+      <a href="" class="text-2xl">SpellChecker</a>
+    </div>
+    <ul class="flex gap-6">
+      <li>
+        <a class="hover:text-blue" href="https://github.com/hunspell/hunspell">
+          HunSpell
+        </a>
+      </li>
+      <li>
+        <a class="hover:text-blue" href="https://github.com/wooorm/nspell">
+          Nspell
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- Spellcheck section -->
+</body>
 
-    <script>
-      const MAX_LENGTH = 300;
 
-      function updateCounts() {
-        var text = document.getElementById("text-input").value;
-        var words = text
-          .trim()
-          .split(/\s+/)
-          .filter(function (word) {
-            return word.length > 0;
-          });
-        var totalWords = words.length;
+<script>
+  const MAX_LENGTH = 300;
 
-        var totalLetters = text.replace(/[^a-zA-Zа-яА-Я]/g, "").length;
+  function updateCounts() {
+    var text = document.getElementById("text-input").value;
+    var words = text
+      .trim()
+      .split(/\s+/)
+      .filter(function (word) {
+        return word.length > 0;
+      });
+    var totalWords = words.length;
 
-        document.getElementById("total-words").textContent =
-          "Нийт үг: " + totalWords;
-        document.getElementById("total-letters").textContent =
-          "Нийт үсэг: " + totalLetters;
+    var totalLetters = text.replace(/[^a-zA-Zа-яА-Я]/g, "").length;
 
-        if (totalLetters > MAX_LENGTH) {
-          document.getElementById("remaining-characters").textContent =
-            "Илүү үсэг оруулсан тул ажиллахгүй !!!";
-          document.getElementById("submit-button").disabled = true;
-        } else {
-          document.getElementById("remaining-characters").textContent =
-            "300 / " + (MAX_LENGTH - totalLetters);
-          document.getElementById("submit-button").disabled = false;
-        }
-      }
-    </script>
-  </body>
+    document.getElementById("total-words").textContent =
+      "Нийт үг: " + totalWords;
+    document.getElementById("total-letters").textContent =
+      "Нийт үсэг: " + totalLetters;
+
+    if (totalLetters > MAX_LENGTH) {
+      document.getElementById("remaining-characters").textContent =
+        "Илүү үсэг оруулсан тул ажиллахгүй !!!";
+      document.getElementById("submit-button").disabled = true;
+    } else {
+      document.getElementById("remaining-characters").textContent =
+        "300 / " + (MAX_LENGTH - totalLetters);
+      document.getElementById("submit-button").disabled = false;
+    }
+  }
+</script>
+</body>
 </html>

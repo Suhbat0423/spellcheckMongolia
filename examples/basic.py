@@ -19,15 +19,15 @@ def spellchecker():
     if request.method == 'POST':
         text = request.form['text'] 
 
-        # Remove specific punctuation (., -) from text
-        text_cleaned = text.translate(str.maketrans('', '', '.,-'))
+
+        text_cleaned = text.translate(str.maketrans('', '', '.,'))
         
-        # Count letters excluding punctuation
+
         total_letters = sum(c.isalpha() for c in text_cleaned)
         if total_letters > 300:
             return render_template('spellchecker.html', text=text, error="Text exceeds 300 letters limit.")
 
-        words = text_cleaned.split()  # Split the cleaned text into words
+        words = text_cleaned.split()
         total_words = len(words) 
 
         for word in words:
